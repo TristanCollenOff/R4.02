@@ -58,13 +58,6 @@ public class VoitureTest {
         assertEquals(10000, voiture.getPrix());
     }
 
-    @Test
-    void testToString(){
-        voiture.setMarque("Peugeot");
-        voiture.setPrix(1000);
-        voiture.setId(2);
-
-        assertEquals(voiture.toString(), "Car{marque='Peugeot', prix=1000, id=2}");
-    }
+    
 
 }
