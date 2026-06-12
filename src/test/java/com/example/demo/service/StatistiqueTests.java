@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframwork.util.Assert;
 
 import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -15,7 +16,7 @@ public class StatistiqueTests {
 
     @BeforeEach
     void setUp() {
-        StatistiqueImpl statistique = new StatistiqueImpl();
+        statistique = new StatistiqueImpl();
     }
 
     @Test
