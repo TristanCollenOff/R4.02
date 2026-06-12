@@ -27,6 +27,20 @@ class WebTests {
     @Autowired
     MockMvc mockMvc;
 
+    @Test
+    void testGetStatistiquesCode200() throws Exception {
+        statistiqueImpl = new StatistiqueImpl();
+        Voiture v1 = new Voiture("Renault", 2000);
+        statistiqueImpl.ajouter(v1);
+
+        mockMvc.perform(get("/statistique")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .andExpect(status().isOk())
+                        .andExpect("$.nombreDeVoitures").value(1)
+                        .andExpect("$.prixMoyen").value(2000)
+                        );
+    }
+
   
 
 }
