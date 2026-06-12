@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.data.Voiture;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframwork.util.Assert;
+import org.springframework.util.Assert;
 
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertThrows;
