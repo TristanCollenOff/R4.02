@@ -40,10 +40,20 @@ class WebTests {
                         ;
     }
 
+
+    @Test
+    void testGetStatistiquesCode400() throws Exception {
+        when(statistiqueImpl.prixMoyen()).thenThrow(new ArithmeticException());
+
+        mockMvc.perform(get("/statistique")
+                        .accept(MediaType.APPLICATION_JSON))
+                        .andExpect(status().is(400))
+                        ;
+    }
+
     @Test
     void testGetStatistiquesCode404() throws Exception {
-        when(statistiqueImpl.prixMoyen()).thenThrow( new ArithmeticException());
-        mockMvc.perform(get("/statistique")
+        mockMvc.perform(get("/statistique-qui-marche-pas")
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isNotFound())
                         ;
@@ -52,6 +62,21 @@ class WebTests {
     
     @Test 
     void testCreerVoiture() throws Exception {
+
+        String jsonVoiture = """
+                {
+                    "marque": "Renault",
+                    "prix": 1000
+                }
+                """;
+
+        mockMvc.perform(post("/voiture")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonVoiture))
+                        .andExpect(status().isOk())
+                        ;
+
+        verify(statistiqueImpl, times(1)).ajouter(any(Voiture.class));
 
     }
 
