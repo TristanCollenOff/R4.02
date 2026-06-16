@@ -30,7 +30,7 @@ class WebTests {
     @Test
     void testGetStatistiquesCode200() throws Exception {
         Echantillon echantillon = new Echantillon(1, 2000);
-        when(statistiqueImpl.getPrixMoyen()).thenReturn(echantillon);
+        when(statistiqueImpl.prixMoyen()).thenReturn(echantillon);
 
         mockMvc.perform(get("/statistique")
                         .accept(MediaType.APPLICATION_JSON))
