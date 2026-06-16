@@ -42,7 +42,7 @@ class WebTests {
 
     @Test
     void testGetStatistiquesCode404() throws Exception {
-
+        when(statistiqueImpl.prixMoyen()).thenThrow( new ArithmeticException());
         mockMvc.perform(get("/statistique")
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isNotFound())
