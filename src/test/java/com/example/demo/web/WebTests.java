@@ -34,13 +34,21 @@ class WebTests {
         statistiqueImpl.ajouter(v1);
 
         mockMvc.perform(get("/statistique")
-                        .accept(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
-                        .andExpect("$.nombreDeVoitures").value(1)
-                        .andExpect("$.prixMoyen").value(2000)
-                        );
+                        .andExpect(jsonPath("$.nombreDeVoitures").value(1))
+                        .andExpect(jsonPath("$.prixMoyen").value(2000))
+                        ;
     }
 
-  
+    @Test
+    void testGetStatistiquesCode404() throws Exception {
+
+    }
+    
+    @Test 
+    void testCreerVoiture() throws Exception {
+        
+    }
 
 }
