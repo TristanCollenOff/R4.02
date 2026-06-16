@@ -29,9 +29,8 @@ class WebTests {
 
     @Test
     void testGetStatistiquesCode200() throws Exception {
-        statistiqueImpl = new StatistiqueImpl();
-        Voiture v1 = new Voiture("Renault", 2000);
-        statistiqueImpl.ajouter(v1);
+        Echantillon echantillon = new Echantillon(1, 2000);
+        when(statistiqueImpl.getPrixMoyen()).thenReturn(echantillon);
 
         mockMvc.perform(get("/statistique")
                         .accept(MediaType.APPLICATION_JSON))
@@ -44,11 +43,16 @@ class WebTests {
     @Test
     void testGetStatistiquesCode404() throws Exception {
 
+        mockMvc.perform(get("/statistique")
+                        .accept(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isNotFound())
+                        ;
+
     }
     
     @Test 
     void testCreerVoiture() throws Exception {
-        
+
     }
 
 }
